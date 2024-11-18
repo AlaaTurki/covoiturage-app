@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covoiturage App</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">Covoiturage</a>
+            <div id="navLinks">
+                <a href="#" id="loginBtn">Connexion</a>
+                <a href="#" id="registerBtn">Inscription</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="searchSection">
+            <h2>Rechercher un trajet</h2>
+            <form id="searchForm">
+                <input type="text" id="departure" placeholder="Ville de départ" required>
+                <input type="text" id="destination" placeholder="Ville d'arrivée" required>
+                <input type="date" id="date" required>
+                <button type="submit">Rechercher</button>
+            </form>
+        </section>
+
+        <section id="results">
+            <!-- Results will be displayed here -->
+        </section>
+
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <h3>Connexion</h3>
+                <form id="loginForm">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Mot de passe" required>
+                    <button type="submit">Se connecter</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Main JavaScript for handling frontend interactions
+        document.getElementById('searchForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const departure = document.getElementById('departure').value;
+            const destination = document.getElementById('destination').value;
+            const date = document.getElementById('date').value;
+
+            try {
+                const response = await fetch(`/api/rides/search?departure_city=${departure}&destination_city=${destination}&departure_date=${date}`);
+                const rides = await response.json();
+                displayRides(rides);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+
+        function displayRides(rides) {
+            const resultsSection = document.getElementById('results');
+            resultsSection.innerHTML = '';
+
+            rides.forEach(ride => {
+                const rideElement = document.createElement('div');
+                rideElement.className = 'ride-card';
+                rideElement.innerHTML = `
+                    <h3>${ride.departure_city} → ${ride.destination_city}</h3>
+                    <p>Date: ${new Date(ride.departure_time).toLocaleString()}</p>
+                    <p>Prix: ${ride.price}€</p>
+                    <p>Places disponibles: ${ride.available_seats}</p>
+                    <button onclick="bookRide(${ride.id})">Réserver</button>
+                `;
+                resultsSection.appendChild(rideElement);
+            });
+        }
+
+        async function bookRide(rideId) {
+            if (!localStorage.getItem('token')) {
+                alert('Veuillez vous connecter pour réserver un trajet');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/bookings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    },
+                    body: JSON.stringify({
+                        ride_id: rideId,
+                        seats_booked: 1
+                    })
+                });
+
+                const data = await response.json();
+                alert(data.message);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
