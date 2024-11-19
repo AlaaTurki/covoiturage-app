@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil</title>
+  <link rel="stylesheet" href="/styles/style.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <%- include('navbar', { user: user }) %>
+
+  <!-- Main Content -->
+  <div class="content text-center py-5">
+    <div class="container">
+      <h1 class="display-4">Bienvenue sur l'application de covoiturage</h1>
+      <p class="lead">Nous vous offrons une plateforme pour trouver des trajets en covoiturage facilement.</p>
+      <% if (!user) { %>
+        <div class="buttons">
+          <a href="/inscription">
+            <button class="btn btn-primary btn-lg mx-3">Inscription</button>
+          </a>
+          <a href="/connexion">
+            <button class="btn btn-outline-primary btn-lg mx-3">Se connecter</button>
+          </a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <%- include('footer') %>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

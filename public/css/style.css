@@ -1,0 +1,219 @@
+/* styles.css */
+
+/* Style de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+header a {
+  color: #fff;
+  font-size: 18px;
+  margin: 0 15px;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+}
+
+nav a {
+  color: white;
+  padding: 14px 20px;
+  text-align: center;
+  display: block;
+}
+
+nav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Main content area */
+.main-content {
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #555;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  .main-content {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  header {
+    text-align: left;
+    padding: 10px;
+  }
+}
+/* styles.css */
+
+/* Make sure the video covers the entire background */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+#background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire container */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Center the content and text on the video */
+.home-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* Style for the button images */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.button-img:hover {
+  transform: scale(1.1);
+}
+
+/* Make sure the footer and header aren't overlapping with the video */
+footer, header {
+  position: relative;
+  z-index: 1;
+}
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%; /* Ensures that the page takes full height */
+  display: flex;
+  flex-direction: column; /* Make the body a flex container */
+}
+
+body {
+  flex-grow: 1; /* Allow the body to grow and take up available space */
+}
+
+.home-content {
+  flex-grow: 1; /* Allow the main content to take up space and push footer down */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+footer {
+  width: 100%; /* Full width for the footer */
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  position: relative;
+}
+
+button, .button-img {
+  cursor: pointer;
+  margin: 10px;
+}
