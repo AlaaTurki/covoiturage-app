@@ -1,39 +1,112 @@
-<!-- views/index.ejs -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accueil</title>
-  <link rel="stylesheet" href="/css/styles.css">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <%- include('header') %>
+
+  <style>
+    /* Ensure the body takes full height */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* Ensure the iframe takes the entire screen */
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .video-background iframe {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* Center the content and text on the video */
+    .home-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    /* Style for the image buttons */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .button-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .button-img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Ensure footer and header are not overlapping with the video */
+    footer, header {
+      position: relative;
+      z-index: 1;
+    }
+
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">
-      <a href="/">
-        <img src="/images/logo.png" alt="Logo du site"> <!-- Remplacez par le chemin de votre logo -->
-      </a>
-    </div>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">À propos</a></li>
-      <li><a href="/contact">Contactez-nous</a></li>
-    </ul>
-  </nav>
 
-  <!-- Section principale avec les boutons -->
+  <!-- Background Video (YouTube Embed) -->
+  <div class="video-background">
+    <iframe 
+      width="100%" 
+      height="100%" 
+      src="https://www.youtube.com/embed/vL7DrI_8yH0?autoplay=1&mute=1&loop=1&playlist=vL7DrI_8yH0" 
+      frameborder="0" 
+      allow="autoplay; encrypted-media" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Main Content -->
   <div class="home-content">
     <h1>Bienvenue sur notre site</h1>
     <div class="buttons">
       <a href="/inscription">
-        <button>Inscription</button>
+        <img src="/images/passenger.jpeg" alt="Passenger" class="button-img">
       </a>
       <a href="/connexion">
-        <button>Se connecter</button>
+        <img src="/images/conducteur.jpeg" alt="Conducteur" class="button-img">
       </a>
     </div>
   </div>
+
+  <!-- <%- include('footer') %> -->
+
 </body>
+
 </html>

@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Header -->
+    <%- include('header') %>
 </head>
 <body>
     <div class="container">
         <h1 class="mt-5">Connexion</h1>
+
+        
 
         <!-- Affichage de l'erreur si elle existe -->
         <% if (error) { %>
@@ -29,5 +33,7 @@
             <button type="submit" class="btn btn-primary">Se connecter</button>
         </form>
     </div>
+    <!-- Include Footer -->
+    <%- include('footer') %>
 </body>
 </html

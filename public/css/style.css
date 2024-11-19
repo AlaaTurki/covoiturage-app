@@ -117,3 +117,103 @@ footer {
     padding: 10px;
   }
 }
+/* styles.css */
+
+/* Make sure the video covers the entire background */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+#background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire container */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Center the content and text on the video */
+.home-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* Style for the button images */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.button-img:hover {
+  transform: scale(1.1);
+}
+
+/* Make sure the footer and header aren't overlapping with the video */
+footer, header {
+  position: relative;
+  z-index: 1;
+}
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%; /* Ensures that the page takes full height */
+  display: flex;
+  flex-direction: column; /* Make the body a flex container */
+}
+
+body {
+  flex-grow: 1; /* Allow the body to grow and take up available space */
+}
+
+.home-content {
+  flex-grow: 1; /* Allow the main content to take up space and push footer down */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+footer {
+  width: 100%; /* Full width for the footer */
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  position: relative;
+}
+
+button, .button-img {
+  cursor: pointer;
+  margin: 10px;
+}

@@ -1,25 +1,25 @@
+<!-- views/home.ejs -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/styles.css">
+  <title>Accueil</title>
+  <link rel="stylesheet" href="/styles/style.css">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/scripts.js" defer></script>
-  <title>Home</title>
+  <!-- Navbar -->
+  <%- include('navbar') %>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact Us</a></li>
-      </ul>
-    </nav>
-  </header>
+  
 
-  <h1>Welcome to Our Website</h1>
-  <p>This is the Home page. You can add more content here!</p>
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Bienvenue sur l'application de covoiturage</h1>
+    <p>Nous vous offrons une plateforme pour trouver des trajets en covoiturage facilement.</p>
+  </div>
+
+  <!-- Footer -->
+  <%- include('footer') %>
 </body>
 </html>

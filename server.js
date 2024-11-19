@@ -22,6 +22,10 @@ app.use(cors()); // Activer CORS pour toutes les routes
 app.use(bodyParser.json()); // Parser les requêtes JSON
 app.use(bodyParser.urlencoded({ extended: true })); // Pour parser les données de formulaires HTML
 
+// app.use(express.static(path.join(__dirname, 'public')));
+
+
+
 // Configurer EJS comme moteur de vue
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // Spécifier le répertoire des vues
